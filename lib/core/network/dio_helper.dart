@@ -50,6 +50,7 @@ class DioHelper {
             return handler.next(response);
           },
           onError: (DioError e, ErrorInterceptorHandler handler) {
+            Log.error(e, error: 'DioError');
             return handler.reject(e);
           },
         ),

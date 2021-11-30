@@ -26,19 +26,19 @@ extension StringExtension on String? {
 
   bool get isImagePath {
     if (this == null) return false;
-    String _value = (p.extension(this!) ?? '').trim();
+    String _value = (p.extension(this!)).trim();
     return _value == '.png' || _value == '.jpeg';
   }
 
   bool get isVideoPath {
     if (this == null) return false;
-    String _value = (p.extension(this!) ?? '').trim();
+    String _value = (p.extension(this!)).trim();
     return _value == '.mp4';
   }
 
   bool get isAudioPath {
     if (this == null) return false;
-    String _value = (p.extension(this!) ?? '').trim();
+    String _value = (p.extension(this!)).trim();
     return _value == '.mp3' || _value == '.audio';
   }
 }

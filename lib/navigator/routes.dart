@@ -1,8 +1,6 @@
-import 'dart:convert';
-
-import 'package:awesome_app/core/utils/log.dart';
 import 'package:awesome_app/core/utils/ui_utils.dart';
 import 'package:awesome_app/screens/common/no_content_found_screen.dart';
+import 'package:awesome_app/screens/example/bcheckin_example_screen.dart';
 import 'package:awesome_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,13 +30,14 @@ class AppRouter {
               return PlashScreen();
             });
       case RouteName.HOME:
+        return platformPageRoute(
+            context: context, builder: (_) => BCheckInExampleScreen());
       default:
         return platformPageRoute(
             context: context,
             builder: (_) {
               return NoContentFoundScreen();
             });
-        break;
     }
   }
 

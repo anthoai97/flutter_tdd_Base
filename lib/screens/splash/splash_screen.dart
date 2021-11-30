@@ -1,4 +1,4 @@
-import 'package:awesome_app/core/utils/ui_utils.dart';
+import 'package:awesome_app/navigator/app_navigator.dart';
 import 'package:awesome_app/resources/images.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,16 @@ class PlashScreen extends StatefulWidget {
 }
 
 class _PlashScreenState extends State<PlashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      await Future.delayed(Duration(seconds: 3));
+      AppNavigator.navigateToHome();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

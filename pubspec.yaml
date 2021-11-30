@@ -26,8 +26,7 @@ dependencies:
 
   # Library
   json_serializable:
-  json_annotation:
-  provider:
+  json_annotation: ^4.3.0
   easy_localization:
   dio:
   logger:
@@ -38,6 +37,7 @@ dependencies:
   flutter_platform_widgets:
   flutter_svg:
   cached_network_image:
+  flutter_bloc:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,6 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner:
+  copy_with_extension_gen:
 
 dependency_overrides:
   meta:
