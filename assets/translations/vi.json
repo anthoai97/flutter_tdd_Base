@@ -1,0 +1,15 @@
+{
+  "example": {
+    "hello": "Xin chào",
+    "world": "tất cả!",
+    "helloWorld": "@:example.hello @:example.world"
+  },
+  "gender": {
+    "male": "Xin chào anh ;) {}",
+    "female": "Xin chào em :) {}",
+    "other": "Xin chào {}"
+  },
+  "date": "{currentDate}.",
+  "dateLogging": "Info: Ngày hôm nay là @:date",
+  "noContentFound" :"No content found"
+}
