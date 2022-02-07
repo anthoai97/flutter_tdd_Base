@@ -19,7 +19,7 @@ samples, guidance on mobile development, and a full API reference.
 
 1. Open your terminal in the folder's path containing your project
 2. Run in terminal: 
-    flutter2 pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
+    flutter pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
 3. Past import => import 'generated/locale_keys.g.dart';
 *** Note: https://pub.dev/packages/easy_localization
 
