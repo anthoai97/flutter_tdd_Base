@@ -31,13 +31,28 @@ class UserBloc extends BaseBloc<UserBlocEvent, UserBlocState> {
           emit(await _getExampleData());
           break;
         case BaseEventDef.LOAD_MORE:
-        // TODO: Add logic for load more
+          emit(state.copyWith(state: BaseStateDef.ON_LOAD_MORE));
+          canLoadMore = false;
+          emit(state.copyWith(state: BaseStateDef.SUCCESS));
+          break;
         case BaseEventDef.REFRESH:
           emit(state.copyWith(state: BaseStateDef.ON_REFRESH));
           emit(await _getExampleData());
           break;
       }
     });
+  }
+
+  @override
+  void onLoadMore() {
+    super.onLoadMore();
+    add(UserBlocEvent(event: BaseEventDef.LOAD_MORE));
+  }
+
+  @override
+  void onRefresh() {
+    super.onRefresh();
+    add(UserBlocEvent(event: BaseEventDef.REFRESH));
   }
 
   Future<UserBlocState> _getExampleData() async {

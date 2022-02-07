@@ -71,7 +71,9 @@ abstract class ColorsDef {
 
   static const Color kPrimaryColor = Colors.black;
   static const Color kPrimaryLightColor = Colors.black12;
+  static const Color kAccentColor = Colors.white;
   static const Color kDefaultTextColor = Colors.black;
+  static const Color kDefaultTextWhiteColor = Colors.white;
 
   static const Color color_transparent = Color.fromRGBO(0, 0, 0, 0);
   static const Color color_black = Color.fromRGBO(0, 0, 0, 1);
@@ -250,44 +252,44 @@ abstract class DimenDef {
 abstract class TextStyleDef {
   static const TextStyle defaultTextStyle = subtitle2;
 
-  late final TextStyle defaultHintTextStyle = subtitle2.copyWith(
+  static final TextStyle defaultHintTextStyle = subtitle2.copyWith(
     color: ColorsDef.kDefaultTextColor.withOpacity(0.5),
   );
 
-  late final TextStyle textButtonTextStyle = button.copyWith(
+  static final TextStyle textButtonTextStyle = button.copyWith(
     color: ColorsDef.kPrimaryColor,
   );
 
-  late final TextStyle commonButtonTextStyle = bodyText1.copyWith(
+  static final TextStyle commonButtonTextStyle = bodyText1.copyWith(
     color: Colors.white,
     fontWeight: FontWeight.bold,
   );
 
-  final TextStyle overline = TextStyle(
+  static const TextStyle overline = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.overline,
     letterSpacing: 1.5,
   );
 
-  final TextStyle caption = TextStyle(
+  static const TextStyle caption = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.caption,
     letterSpacing: 0.4,
   );
 
-  final TextStyle button = TextStyle(
+  static const TextStyle button = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.buttonText,
     letterSpacing: 1.25,
   );
 
-  final TextStyle bodyText2 = TextStyle(
+  static const TextStyle bodyText2 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.bodyText2,
     letterSpacing: 0.25,
   );
 
-  final TextStyle bodyText1 = TextStyle(
+  static const TextStyle bodyText1 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.bodyText1,
     letterSpacing: 0.5,
@@ -299,41 +301,41 @@ abstract class TextStyleDef {
     letterSpacing: 0.1,
   );
 
-  final TextStyle subtitle1 = TextStyle(
+  static const TextStyle subtitle1 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.subtitle1,
     letterSpacing: 0.15,
   );
 
-  final TextStyle headline6 = TextStyle(
+  static const TextStyle headline6 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline6,
     letterSpacing: 0.15,
   );
 
-  final TextStyle headline5 = TextStyle(
+  static const TextStyle headline5 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline5,
   );
 
-  final TextStyle headline4 = TextStyle(
+  static const TextStyle headline4 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline4,
     letterSpacing: 0.25,
   );
 
-  final TextStyle headline3 = TextStyle(
+  static const TextStyle headline3 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline3,
   );
 
-  final TextStyle headline2 = TextStyle(
+  static const TextStyle headline2 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline2,
     letterSpacing: -0.5,
   );
 
-  final TextStyle headline1 = TextStyle(
+  static const TextStyle headline1 = TextStyle(
     color: ColorsDef.kDefaultTextColor,
     fontSize: DimenDef.headline1,
     letterSpacing: -1.5,

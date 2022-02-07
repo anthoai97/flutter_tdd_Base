@@ -1,3 +1,4 @@
+import 'package:awesome_app/resources/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_app/core/route/navigation_manager.dart';
 import 'package:awesome_app/navigator/routes.dart';
@@ -12,8 +13,9 @@ class AwesomeApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeDef.lightTheme,
       themeMode: ThemeMode.system,
+      darkTheme: ThemeDef.darkTheme,
       navigatorKey: NavigationManager().rootNavigator,
       onGenerateRoute: (RouteSettings settings) =>
           AppRouter.generateRoute(context, settings),

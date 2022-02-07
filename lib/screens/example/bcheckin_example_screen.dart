@@ -2,7 +2,8 @@ import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
 import 'package:awesome_app/core/base_bloc/base_widget_with_bloc.dart';
 import 'package:awesome_app/models/m_example.dart';
-import 'package:awesome_app/widgets/core_widget/custom_smart_refresh.dart';
+import 'package:awesome_app/resources/styles.dart';
+import 'package:awesome_app/widgets/custom_smart_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
@@ -27,34 +28,17 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(state),
-      backgroundColor: Colors.white,
     );
-
-    // Widget _scaffold = Scaffold(
-    //   appBar: _buildAppBar(),
-    //   body: _buildBody(state),
-    //   backgroundColor: Colors.white,
-    // );
-    //
-    // _scaffold = NotificationListener<OverscrollIndicatorNotification>(
-    //   onNotification: (notification) {
-    //     notification.disallowGlow();
-    //     return true;
-    //   },
-    //   child: _scaffold,
-    // );
-    //
-    // return _scaffold;
   }
 
   PreferredSizeWidget _buildAppBar() => AppBar(title: Text('Example app bar'));
 
   Widget _buildBody(UserBlocState state) {
     Widget _body = Container();
-
     switch (state.state) {
       case BaseStateDef.PROCESSING:
-        _body = Center(child: LoadingIndicator(indicatorType: Indicator.lineScale));
+        _body =
+            Center(child: LoadingIndicator(indicatorType: Indicator.lineScale));
         break;
       case BaseStateDef.SUCCESS:
       case BaseStateDef.ON_REFRESH:
@@ -62,12 +46,12 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
         var users = state.user;
         _body = CustomSmartRefresh(
           controller: refreshController,
-          enablePullUp: true,
+          enablePullUp: bloc()!.canLoadMore,
           onRefresh: (cont) {
-            bloc()?.add(UserBlocEvent(event: BaseEventDef.REFRESH));
+            bloc()?.onRefresh();
           },
           onLoading: (cont) {
-            bloc()?.add(UserBlocEvent(event: BaseEventDef.LOAD_MORE));
+            bloc()?.onLoadMore();
           },
           child: _buildUserList(users!),
         );
@@ -85,7 +69,7 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
           height: 40,
           child: Text(
             user.name!,
-            style: TextStyle(color: Colors.black),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         );
       },
