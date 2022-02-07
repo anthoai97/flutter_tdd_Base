@@ -13,7 +13,7 @@ class AwesomeApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(primarySwatch: Colors.blue),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       navigatorKey: NavigationManager().rootNavigator,
       onGenerateRoute: (RouteSettings settings) =>
           AppRouter.generateRoute(context, settings),

@@ -12,17 +12,19 @@ class NoContentFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-        appBar: PlatformAppBar(
-          title: Text(AppString.noContentFound.tr()),
-          automaticallyImplyLeading: true,
-          cupertino: (context, platform) => CupertinoNavigationBarData(
-            transitionBetweenRoutes: false,
-          ),
+      appBar: PlatformAppBar(
+        title: Text(AppString.noContentFound.tr()),
+        automaticallyImplyLeading: true,
+        cupertino: (context, platform) => CupertinoNavigationBarData(
+          transitionBetweenRoutes: false,
         ),
-        body: Center(
-            child: Text(
+      ),
+      body: Center(
+        child: Text(
           msg ?? AppString.noContentFound.tr(),
           style: TextStyle(fontSize: FontDef.defaultTextFontSize),
-        )));
+        ),
+      ),
+    );
   }
 }

@@ -84,7 +84,7 @@ class ApiService {
     if (response != null && response.statusCode == 200) {
       try {
         _result.success = true;
-        _result.parseJson(response.data, baseObject);
+        _result.parseJson<K>(response.data, baseObject);
       } catch (e) {
         Log.error(e.toString(), error: 'ParseJson ERROR');
         throw AppException(message: 'ParseJson ERROR');

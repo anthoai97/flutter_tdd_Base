@@ -35,22 +35,29 @@ class DioHelper {
         InterceptorsWrapper(
           onRequest: (RequestOptions options,
               RequestInterceptorHandler handler) async {
+            String logContent = '[${options.method}] ${options.path}';
+
             /// Handle user token is need or no
-            var _header = _getHeader();
-            if (_header.isNotEmpty) {
-              options.headers.addAll(_header);
+            var header = _getHeader();
+            if (header.isNotEmpty) {
+              options.headers.addAll(header);
             }
-            Log.debug('DIO HELPER ===> on Request');
-            Log.debug(_header, title: 'HEADER');
+
+            if (options.method == 'GET') {
+              logContent += '\nQuery param: ${options.queryParameters}';
+            } else {
+              logContent += '\nBody: ${options.data}';
+            }
+            Log.debug(logContent, title: 'onRequest');
+
             return handler.next(options);
           },
           onResponse: (Response response, ResponseInterceptorHandler handler) {
-            /// Do something with response data.
-            Log.debug('DIO HELPER ===> on Response');
+            Log.debug('${response.data}', title: 'onResponse');
             return handler.next(response);
           },
           onError: (DioError e, ErrorInterceptorHandler handler) {
-            Log.error(e, error: 'DioError');
+            Log.error(e, error: 'onError');
             return handler.reject(e);
           },
         ),

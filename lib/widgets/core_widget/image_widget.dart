@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:awesome_app/core/utils/extensions.dart';
 import 'package:awesome_app/core/utils/ui_utils.dart';
-import 'package:awesome_app/resources/colors.dart';
+import 'package:awesome_app/resources/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';

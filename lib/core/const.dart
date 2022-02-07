@@ -1,3 +1,14 @@
+abstract class SystemCode {
+  static const String UNDEFINED_ERROR = 'undefined_error';
+  static const String UNAUTHORIZED = 'UNAUTHORIZED';
+}
+
+///
+abstract class SystemMessage {
+  static const String UNDEFINED_ERROR = 'undefined_error';
+}
+
+///
 abstract class ExceptionConstant {
   static const int notFound = 400;
   static const String msgNotFound = 'Sever not found.' + _plsTryLater;
@@ -43,13 +54,4 @@ abstract class ExceptionConstant {
   static const String msgUnableToProcess =
       'Unable to process the data' + _plsTryLater;
   static const String _plsTryLater = ' Please try later.';
-}
-
-abstract class SystemCode {
-  static const String UNDEFINED_ERROR = 'undefined_error';
-  static const String UNAUTHORIZED = 'UNAUTHORIZED';
-}
-
-abstract class SystemMessage {
-  static const String UNDEFINED_ERROR = 'undefined_error';
 }

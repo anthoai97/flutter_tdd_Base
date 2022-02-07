@@ -12,10 +12,11 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: AppConfig.LOCALES,
-        path: AppConfig.LOCALIZATION_PATH,
-        fallbackLocale: Locale('en', 'US'),
-        useOnlyLangCode: true,
-        child: AwesomeApp()),
+      supportedLocales: AppConfig.LOCALES,
+      path: AppConfig.LOCALIZATION_PATH,
+      fallbackLocale: Locale('en', 'US'),
+      useOnlyLangCode: true,
+      child: AwesomeApp(),
+    ),
   );
 }
