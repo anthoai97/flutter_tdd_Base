@@ -1,6 +1,6 @@
 import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/screens/common/no_content_found_screen.dart';
-import 'package:awesome_app/screens/example/bcheckin_example_screen.dart';
+import 'package:awesome_app/features/example/presentation/page/bcheckin_example_screen.dart';
 import 'package:awesome_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';

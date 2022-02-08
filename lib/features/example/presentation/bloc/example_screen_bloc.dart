@@ -1,8 +1,7 @@
 import 'package:awesome_app/core/base_bloc/base_bloc.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
-import 'package:awesome_app/models/m_example.dart';
-import 'package:awesome_app/repositories/RExample.dart';
+import 'package:awesome_app/features/example/data/models/m_example.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
 part 'example_screen_bloc.g.dart';
@@ -28,7 +27,7 @@ class UserBloc extends BaseBloc<UserBlocEvent, UserBlocState> {
       switch (event.event) {
         case BaseEventDef.INIT:
           emit(state.copyWith(state: BaseStateDef.PROCESSING));
-          emit(await _getExampleData());
+          // emit(await _getExampleData());
           break;
         case BaseEventDef.LOAD_MORE:
           emit(state.copyWith(state: BaseStateDef.ON_LOAD_MORE));
@@ -37,7 +36,7 @@ class UserBloc extends BaseBloc<UserBlocEvent, UserBlocState> {
           break;
         case BaseEventDef.REFRESH:
           emit(state.copyWith(state: BaseStateDef.ON_REFRESH));
-          emit(await _getExampleData());
+          // emit(await _getExampleData());
           break;
       }
     });
@@ -55,13 +54,13 @@ class UserBloc extends BaseBloc<UserBlocEvent, UserBlocState> {
     add(UserBlocEvent(event: BaseEventDef.REFRESH));
   }
 
-  Future<UserBlocState> _getExampleData() async {
-    List<ExampleModel>? _models = await RExample.getExampleModels();
+  // Future<UserBlocState> _getExampleData() async {
+  //   List<ExampleModel>? _models = await RExample.getExampleModels();
 
-    if (_models != null) {
-      return state.copyWith(state: BaseStateDef.SUCCESS, user: _models);
-    } else {
-      return state.copyWith(state: BaseStateDef.FAILED, user: null);
-    }
-  }
+  //   if (_models != null) {
+  //     return state.copyWith(state: BaseStateDef.SUCCESS, user: _models);
+  //   } else {
+  //     return state.copyWith(state: BaseStateDef.FAILED, user: null);
+  //   }
+  // }
 }

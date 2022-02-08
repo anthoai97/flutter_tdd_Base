@@ -2,12 +2,11 @@ import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
 import 'package:awesome_app/core/base_bloc/base_widget_with_bloc.dart';
 import 'package:awesome_app/core/utils/log.dart';
-import 'package:awesome_app/models/m_example.dart';
+import 'package:awesome_app/features/example/domain/entities/example.dart';
+import 'package:awesome_app/features/example/presentation/bloc/example_screen_bloc.dart';
 import 'package:awesome_app/resources/R.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-
-import 'bloc/example_screen_bloc.dart';
 
 class BCheckInExampleScreen extends StatefulWidget {
   const BCheckInExampleScreen({Key? key}) : super(key: key);
@@ -76,7 +75,7 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
     return _body;
   }
 
-  Widget _buildUserList(List<ExampleModel> users) {
+  Widget _buildUserList(List<Example> users) {
     return ListView.builder(
       itemBuilder: (_, index) {
         var user = users[index];
