@@ -24,7 +24,7 @@ void main() {
     Example(avatar: '', id: 1, name: 'Test 2'),
   ];
 
-  test('Should return a list of todo from repository', () async {
+  test('Should return a list of Example from repository', () async {
     // arrage
     when(mockExampleRepository.getUserExample())
         .thenAnswer((_) async => ApiResponse<List<Example>>(data: tData));
