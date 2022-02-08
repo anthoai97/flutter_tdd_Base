@@ -33,7 +33,7 @@ void main() {
     final result = await usecase.call(NoParam());
 
     // assert
-    expect(result, equals(ApiResponse<List<Example>>(data: tData)));
+    expect(result.data, equals(tData));
     verify(mockExampleRepository.getUserExample());
     verifyNoMoreInteractions(mockExampleRepository);
   });
