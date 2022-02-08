@@ -1,4 +1,5 @@
 import 'package:awesome_app/resources/R.dart';
+// ignore: implementation_imports
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
