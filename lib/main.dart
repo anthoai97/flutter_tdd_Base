@@ -1,5 +1,5 @@
 import 'package:awesome_app/awesome_app.dart';
-import 'package:awesome_app/config.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +12,8 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: AppConfig.LOCALES,
-      path: AppConfig.LOCALIZATION_PATH,
+      supportedLocales: R.LOCALES,
+      path: R.LOCALIZATION_PATH,
       fallbackLocale: Locale('en', 'US'),
       useOnlyLangCode: true,
       child: AwesomeApp(),

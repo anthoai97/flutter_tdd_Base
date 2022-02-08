@@ -33,32 +33,6 @@ abstract class PaddingDef {
   static const double padding_50 = 50;
 }
 
-abstract class FontDef {
-  static const double defaultTextButtonFontSize = 14;
-  static const double defaultTextFontSize = 14;
-  static const double defaultItemTitleTextSize = 14;
-  static const double defaultItemSubTitleTextSize = 12;
-  static const double largeTitleTextSize = 20;
-
-  static const double font_size_5 = 5;
-  static const double font_size_6 = 6;
-  static const double font_size_7 = 7;
-  static const double font_size_8 = 8;
-  static const double font_size_9 = 9;
-  static const double font_size_10 = 10;
-  static const double font_size_11 = 11;
-  static const double font_size_12 = 12;
-  static const double font_size_13 = 13;
-  static const double font_size_14 = 14;
-  static const double font_size_15 = 15;
-  static const double font_size_16 = 16;
-  static const double font_size_18 = 18;
-  static const double font_size_20 = 20;
-  static const double font_size_22 = 22;
-  static const double font_size_24 = 24;
-  static const double font_size_32 = 32;
-}
-
 abstract class ColorsDef {
   static const Color facebookBackgroundColor = Color.fromRGBO(66, 103, 178, 1);
   static const Color googleBackgroundColor = Color.fromRGBO(51, 103, 214, 1);
@@ -66,12 +40,10 @@ abstract class ColorsDef {
       Color.fromRGBO(17, 17, 17, 1);
 
   static const Color themeLightBGColor = Color.fromRGBO(239, 239, 241, 1.0);
-  static const Color themeTextBlackColor = Colors.black;
-  static const Color themeTextGrayColor = Colors.black45;
 
   static const Color kPrimaryColor = Colors.black;
   static const Color kPrimaryLightColor = Colors.black12;
-  static const Color kAccentColor = Colors.white;
+  static const Color kAccentColor = Color(0xFF7f0000);
   static const Color kDefaultTextColor = Colors.black;
   static const Color kDefaultTextWhiteColor = Colors.white;
 
@@ -151,7 +123,7 @@ abstract class DimenDef {
 
   ///
   /// [smallRadius] 12.0
-  static const double smallRadius = 12.0;
+  static const double smallRadius = 10.0;
 
   /// [mediumRadius] 16.0
   static const double mediumRadius = 16.0;
@@ -176,7 +148,7 @@ abstract class DimenDef {
   static const double mediumButtonHeight = 34.0;
 
   /// [smallButtonHeight] 50.0
-  static const double buttonHeight = 50.0;
+  static const double buttonHeight = 45.0;
 
   /// [bottomNavHeight] 64.0
   static const double bottomNavHeight = 64.0;
@@ -247,9 +219,14 @@ abstract class DimenDef {
 
   /// [headline1] 96.0
   static const double headline1 = 96.0;
+
+  /// [appbar] 16.0
+  static const double appbar = 16.0;
 }
 
 abstract class TextStyleDef {
+  //
+
   static const TextStyle defaultTextStyle = subtitle2;
 
   static final TextStyle defaultHintTextStyle = subtitle2.copyWith(
@@ -257,7 +234,7 @@ abstract class TextStyleDef {
   );
 
   static final TextStyle textButtonTextStyle = button.copyWith(
-    color: ColorsDef.kPrimaryColor,
+    fontWeight: FontWeight.w600,
   );
 
   static final TextStyle commonButtonTextStyle = bodyText1.copyWith(
@@ -340,4 +317,12 @@ abstract class TextStyleDef {
     fontSize: DimenDef.headline1,
     letterSpacing: -1.5,
   );
+
+  static const TextStyle appbar = TextStyle(
+    color: ColorsDef.color_white,
+    fontSize: DimenDef.appbar,
+    fontWeight: FontWeight.bold,
+  );
+
+  //
 }

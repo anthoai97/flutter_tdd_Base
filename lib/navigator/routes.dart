@@ -1,4 +1,4 @@
-import 'package:awesome_app/core/utils/ui_utils.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/screens/common/no_content_found_screen.dart';
 import 'package:awesome_app/screens/example/bcheckin_example_screen.dart';
 import 'package:awesome_app/screens/splash/splash_screen.dart';
@@ -26,7 +26,7 @@ class AppRouter {
         return platformPageRoute(
             context: context,
             builder: (ctx) {
-              initScreenUtil(ctx);
+              initResource(ctx);
               return PlashScreen();
             });
       case RouteName.HOME:
@@ -41,14 +41,9 @@ class AppRouter {
     }
   }
 
-  static void initScreenUtil(BuildContext context) {
+  static void initResource(BuildContext context) {
     try {
-      MediaQueryData data = MediaQuery.of(context);
-      ScreenUtil.screenWidth = data.size.width;
-      ScreenUtil.screenHeight = data.size.height;
-      ScreenUtil.pixelRatio = data.devicePixelRatio;
-      ScreenUtil.statusBarHeight = data.padding.top;
-      ScreenUtil.bottomBarHeight = data.padding.bottom;
+      R.init(context);
     } catch (e) {
       // ignore
     }

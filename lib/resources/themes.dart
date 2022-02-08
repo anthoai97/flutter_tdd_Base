@@ -1,19 +1,32 @@
 import 'package:awesome_app/resources/styles.dart';
 import 'package:flutter/material.dart';
 
-abstract class ThemeDef {
-  static final ThemeData lightTheme = ThemeData(
+class ThemeDef {
+  static ThemeDef? _instance;
+
+  ThemeDef._();
+
+  static ThemeDef get instance {
+    if (_instance == null) {
+      _instance = ThemeDef._();
+    }
+
+    return _instance!;
+  }
+
+  late final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: ColorsDef.kPrimaryColor,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: ColorsDef.color_white,
     splashFactory: InkRipple.splashFactory,
     buttonTheme: commonButtonTheme,
     textTheme: textTheme,
     textButtonTheme: textButtonTheme,
     outlinedButtonTheme: outlinedButtonTheme,
+    appBarTheme: appBarTheme,
   )..colorScheme.copyWith(secondary: ColorsDef.kAccentColor);
 
-  static final ThemeData darkTheme = ThemeData(
+  late final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: ColorsDef.kPrimaryColor,
     scaffoldBackgroundColor: ColorsDef.color_black,
@@ -21,10 +34,11 @@ abstract class ThemeDef {
     buttonTheme: commonButtonTheme,
     textTheme: textBlackTheme,
     textButtonTheme: textButtonTheme,
-    outlinedButtonTheme: outlinedButtonTheme,
-  );
+    outlinedButtonTheme: outlinedButtonDarkTheme,
+    appBarTheme: appBarTheme.copyWith(backgroundColor: ColorsDef.color_black),
+  )..colorScheme.copyWith(secondary: ColorsDef.kAccentColor);
 
-  static final TextTheme textTheme = TextTheme(
+  late final TextTheme textTheme = TextTheme(
     headline1: TextStyleDef.headline1,
     headline2: TextStyleDef.headline2,
     headline3: TextStyleDef.headline3,
@@ -40,7 +54,7 @@ abstract class ThemeDef {
     overline: TextStyleDef.overline,
   );
 
-  static final TextTheme textBlackTheme = TextTheme(
+  late final TextTheme textBlackTheme = TextTheme(
     headline1: TextStyleDef.headline1
         .copyWith(color: ColorsDef.kDefaultTextWhiteColor),
     headline2: TextStyleDef.headline2
@@ -68,44 +82,64 @@ abstract class ThemeDef {
         TextStyleDef.overline.copyWith(color: ColorsDef.kDefaultTextWhiteColor),
   );
 
-  static final TextButtonThemeData textButtonTheme = TextButtonThemeData(
-    style: ButtonStyle(
-      textStyle: MaterialStateProperty.all(
-        TextStyleDef.textButtonTextStyle,
-      ),
-      foregroundColor: MaterialStateProperty.all(ColorsDef.kPrimaryColor),
-    ),
-  );
-
-  static final OutlinedButtonThemeData outlinedButtonTheme =
-      OutlinedButtonThemeData(
-    style: ButtonStyle(
-      textStyle: MaterialStateProperty.all(
-        TextStyleDef.bodyText1.copyWith(fontWeight: FontWeight.w500),
-      ),
-      foregroundColor: MaterialStateProperty.all(ColorsDef.color_black),
-      padding: MaterialStateProperty.all(
-        EdgeInsets.all(1.5 * DimenDef.smallSpacing),
-      ),
-      side: MaterialStateProperty.all(
-        BorderSide(color: ColorsDef.kPrimaryColor),
-      ),
-      shape: MaterialStateProperty.all(
-        RoundedRectangleBorder(
+  late final TextButtonThemeData textButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+        primary: ColorsDef.color_white,
+        backgroundColor: ColorsDef.kAccentColor,
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(1.5 * DimenDef.smallSpacing),
+        textStyle: TextStyleDef.textButtonTextStyle,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(DimenDef.smallRadius),
         ),
+        onSurface: ColorsDef.color_white),
+  );
+
+  late final OutlinedButtonThemeData outlinedButtonTheme =
+      OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      primary: ColorsDef.color_black,
+      backgroundColor: ColorsDef.kPrimaryLightColor,
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(1.5 * DimenDef.smallSpacing),
+      textStyle: TextStyleDef.textButtonTextStyle,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(DimenDef.smallRadius),
       ),
     ),
   );
 
-  static final ButtonThemeData commonButtonTheme = ButtonThemeData(
+  late final OutlinedButtonThemeData outlinedButtonDarkTheme =
+      OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      primary: ColorsDef.color_white,
+      backgroundColor: ColorsDef.kPrimaryLightColor,
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(1.5 * DimenDef.smallSpacing),
+      textStyle: TextStyleDef.textButtonTextStyle,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(DimenDef.smallRadius),
+      ),
+    ),
+  );
+
+  late final ButtonThemeData commonButtonTheme = ButtonThemeData(
     height: DimenDef.buttonHeight,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(DimenDef.mediumRadius),
     ),
-    buttonColor: ColorsDef.kPrimaryColor,
+    buttonColor: ColorsDef.kAccentColor,
     disabledColor: ColorsDef.color_FAFAFA,
     highlightColor: Colors.white.withOpacity(0.05),
     splashColor: Colors.white.withOpacity(0.1),
   );
+
+  late final AppBarTheme appBarTheme = AppBarTheme(
+    centerTitle: true,
+    elevation: 0,
+    titleTextStyle: TextStyleDef.appbar,
+    backgroundColor: ColorsDef.kAccentColor,
+  );
+
+  //
 }

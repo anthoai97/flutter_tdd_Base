@@ -1,7 +1,6 @@
-import 'package:awesome_app/resources/string.dart';
-import 'package:awesome_app/resources/styles.dart';
+import 'package:awesome_app/resources/R.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class NoContentFoundScreen extends StatelessWidget {
@@ -13,7 +12,7 @@ class NoContentFoundScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text(AppString.noContentFound.tr()),
+        title: Text(R.strings.noContentFound.tr()),
         automaticallyImplyLeading: true,
         cupertino: (context, platform) => CupertinoNavigationBarData(
           transitionBetweenRoutes: false,
@@ -21,8 +20,8 @@ class NoContentFoundScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          msg ?? AppString.noContentFound.tr(),
-          style: TextStyle(fontSize: FontDef.defaultTextFontSize),
+          msg ?? R.strings.noContentFound.tr(),
+          style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:awesome_app/navigator/app_navigator.dart';
-import 'package:awesome_app/resources/images.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:flutter/material.dart';
 
 class PlashScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _PlashScreenState extends State<PlashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.asset(ResImg.SPLASH_GIF, fit: BoxFit.cover),
+      child: Image.asset(R.images.splashGif, fit: BoxFit.cover),
     );
   }
 }

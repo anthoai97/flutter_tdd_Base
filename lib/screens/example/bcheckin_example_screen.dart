@@ -1,9 +1,9 @@
 import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
 import 'package:awesome_app/core/base_bloc/base_widget_with_bloc.dart';
+import 'package:awesome_app/core/utils/log.dart';
 import 'package:awesome_app/models/m_example.dart';
-import 'package:awesome_app/resources/styles.dart';
-import 'package:awesome_app/widgets/custom_smart_refresh.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
@@ -34,6 +34,7 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
   PreferredSizeWidget _buildAppBar() => AppBar(title: Text('Example app bar'));
 
   Widget _buildBody(UserBlocState state) {
+    Log.debug(R.screenUtil.screenWidth);
     Widget _body = Container();
     switch (state.state) {
       case BaseStateDef.PROCESSING:
@@ -43,17 +44,31 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
       case BaseStateDef.SUCCESS:
       case BaseStateDef.ON_REFRESH:
       case BaseStateDef.ON_LOAD_MORE:
-        var users = state.user;
-        _body = CustomSmartRefresh(
-          controller: refreshController,
-          enablePullUp: bloc()!.canLoadMore,
-          onRefresh: (cont) {
-            bloc()?.onRefresh();
-          },
-          onLoading: (cont) {
-            bloc()?.onLoadMore();
-          },
-          child: _buildUserList(users!),
+        // var users = state.user;
+        // _body = CustomSmartRefresh(
+        //   controller: refreshController,
+        //   enablePullUp: bloc()!.canLoadMore,
+        //   onRefresh: (cont) {
+        //     bloc()?.onRefresh();
+        //   },
+        //   onLoading: (cont) {
+        //     bloc()?.onLoadMore();
+        //   },
+        //   child: _buildUserList(users!),
+        // );
+        _body = Center(
+          child: Column(
+            children: [
+              TextButton(
+                child: Text('Text Button'),
+                onPressed: null,
+              ),
+              OutlinedButton(
+                onPressed: null,
+                child: Text('Outlined Button'),
+              ),
+            ],
+          ),
         );
         break;
     }
@@ -69,7 +84,7 @@ class _BCheckInExampleScreenState extends ComponentRefreshState<
           height: 40,
           child: Text(
             user.name!,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
         );
       },
