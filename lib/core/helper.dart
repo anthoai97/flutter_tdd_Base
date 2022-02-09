@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Helper {}
+class Helper {
+  static int? stringToInt(String? number) =>
+      number == null ? null : int.parse(number);
+
+  static String? stringFromInt(int? number) => number?.toString();
+}
 
 class HexColor extends Color {
   static int _getColorFromHex(String? hexColor, int defaultColor) {
