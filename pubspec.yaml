@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
   flutter:
@@ -39,6 +39,9 @@ dependencies:
   cached_network_image:
   flutter_bloc:
   meta:
+  get_it:
+  shared_preferences:
+  bloc_test:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -49,6 +52,14 @@ dev_dependencies:
     sdk: flutter
   build_runner:
   copy_with_extension_gen:
+  mockito: ^5.0.17
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^1.0.0
 
 dependency_overrides:
 

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:awesome_app/core/utils/extensions.dart';
-import 'package:awesome_app/core/utils/ui_utils.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/resources/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -245,7 +245,7 @@ class ImgView {
     Widget view() {
       try {
         if (null == height && null != ratio) {
-          width ??= ScreenUtil.screenWidth;
+          width ??= R.screenUtil.screenWidth;
           height = width! * ratio;
         }
         if (src.endsWith('svg')) {

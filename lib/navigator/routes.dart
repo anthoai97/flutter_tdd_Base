@@ -1,7 +1,7 @@
-import 'package:awesome_app/core/utils/ui_utils.dart';
+import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/screens/common/no_content_found_screen.dart';
-import 'package:awesome_app/screens/example/bcheckin_example_screen.dart';
-import 'package:awesome_app/screens/splash/splash_screen.dart';
+import 'package:awesome_app/features/example/presentation/page/example_page.dart';
+import 'package:awesome_app/screens/common/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -26,12 +26,12 @@ class AppRouter {
         return platformPageRoute(
             context: context,
             builder: (ctx) {
-              initScreenUtil(ctx);
+              initResource(ctx);
               return PlashScreen();
             });
       case RouteName.HOME:
         return platformPageRoute(
-            context: context, builder: (_) => BCheckInExampleScreen());
+            context: context, builder: (_) => ExampleScreen());
       default:
         return platformPageRoute(
             context: context,
@@ -41,14 +41,9 @@ class AppRouter {
     }
   }
 
-  static void initScreenUtil(BuildContext context) {
+  static void initResource(BuildContext context) {
     try {
-      MediaQueryData data = MediaQuery.of(context);
-      ScreenUtil.screenWidth = data.size.width;
-      ScreenUtil.screenHeight = data.size.height;
-      ScreenUtil.pixelRatio = data.devicePixelRatio;
-      ScreenUtil.statusBarHeight = data.padding.top;
-      ScreenUtil.bottomBarHeight = data.padding.bottom;
+      R.init(context);
     } catch (e) {
       // ignore
     }

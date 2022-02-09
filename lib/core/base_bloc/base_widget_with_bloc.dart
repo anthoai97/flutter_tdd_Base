@@ -110,6 +110,8 @@ abstract class ComponentRefreshState<
 
   @override
   void handleStateChangeListener(BuildContext context, S state) {
+    super.handleStateChangeListener(context, state);
+
     switch (state.state) {
       case BaseStateDef.FAILED:
         if (refreshController.isRefresh) {
