@@ -15,7 +15,7 @@ class _PlashScreenState extends State<PlashScreen> {
     super.initState();
 
     WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(Duration(seconds: 1));
       AppNavigator.navigateToHome();
     });
   }

@@ -16,14 +16,15 @@ import 'package:dio/dio.dart';
  */
 
 class ApiService {
-  ApiService._privateConstructor();
+  /// Remove this command to make it singleton by hand
+  // ApiService._privateConstructor();
 
-  static final ApiService _instance = ApiService._privateConstructor();
+  // static final ApiService _instance = ApiService._privateConstructor();
 
-  factory ApiService() => _instance;
+  // factory ApiService() => _instance;
 
-  static Future<ApiResponse<T>> get<T, K>(url,
-      {BaseObject<K>? baseObject, Map<String, String>? params}) async {
+  Future<ApiResponse<T>> get<T, K>(String url,
+      {BaseObject? baseObject, Map<String, String>? params}) async {
     try {
       Response response =
           await DioHelper.getDio().get(url, queryParameters: params);
@@ -33,9 +34,9 @@ class ApiService {
     }
   }
 
-  static Future<ApiResponse<T>> put<T, K>(
+  Future<ApiResponse<T>> put<T, K>(
     String url, {
-    BaseObject<K>? baseObject,
+    BaseObject? baseObject,
     dynamic body,
     Map<String, dynamic>? params,
   }) async {
@@ -48,9 +49,9 @@ class ApiService {
     }
   }
 
-  static Future<ApiResponse<T>> post<T, K>(
+  Future<ApiResponse<T>> post<T, K>(
     String url, {
-    BaseObject<K>? baseObject,
+    BaseObject? baseObject,
     dynamic body,
     Map<String, dynamic>? params,
   }) async {
@@ -63,9 +64,9 @@ class ApiService {
     }
   }
 
-  static Future<ApiResponse<T>> delete<T, K>(
+  Future<ApiResponse<T>> delete<T, K>(
     String url, {
-    BaseObject<K>? baseObject,
+    BaseObject? baseObject,
     Map<String, dynamic>? params,
   }) async {
     try {
@@ -78,8 +79,8 @@ class ApiService {
     }
   }
 
-  static ApiResponse<T> _handleResponse<T, K>(
-      Response? response, BaseObject<K>? baseObject) {
+  ApiResponse<T> _handleResponse<T, K>(
+      Response? response, BaseObject? baseObject) {
     final _result = ApiResponse<T>();
     if (response != null && response.statusCode == 200) {
       try {
@@ -98,15 +99,14 @@ class ApiService {
     return _result;
   }
 
-  static ApiResponse<T> _handleAppException<T>(AppException ex) =>
-      ApiResponse<T>(
+  ApiResponse<T> _handleAppException<T>(AppException ex) => ApiResponse<T>(
         data: null,
         message: ex.message,
         success: false,
         statusCode: ex.prefix,
       );
 
-  static AppException _handleError(dynamic error) {
+  AppException _handleError(dynamic error) {
     if (error is Exception) {
       try {
         if (error is DioError) {

@@ -1,8 +1,8 @@
 import 'package:awesome_app/core/network/base_response.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class BaseObject<T> extends Equatable {
-  T fromJson(json);
+abstract class BaseObject extends Equatable {
+  fromJson(json);
 }
 
 abstract class Usecase<Type, Params> {

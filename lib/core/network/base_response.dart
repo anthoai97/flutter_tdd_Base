@@ -13,10 +13,10 @@ class ApiResponse<T> {
     this.statusCode,
   });
 
-  ApiResponse<T> parseJson<K>(json, BaseObject<K>? target) {
-    success = true;
-    message = "Error happen";
-    statusCode = "OK";
+  ApiResponse<T> parseJson<K>(json, BaseObject? target) {
+    // success = true;
+    // message = "Error happen";
+    // statusCode = "OK";
     if (target != null) {
       data = (json is List
           ? json.map<K>((e) => target.fromJson(e)).toList()
@@ -53,7 +53,7 @@ class ApiResponse<T> {
     return 'success: $success\nmessage: $message\nstatusCode: $statusCode\n data: $data';
   }
 
-  String getErrorMessage() {
-    return 'Error occurst';
+  String get getErrorMessage {
+    return message ?? 'No error message';
   }
 }

@@ -1,7 +1,7 @@
 import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/screens/common/no_content_found_screen.dart';
-import 'package:awesome_app/features/example/presentation/page/bcheckin_example_screen.dart';
-import 'package:awesome_app/screens/splash/splash_screen.dart';
+import 'package:awesome_app/features/example/presentation/page/example_page.dart';
+import 'package:awesome_app/screens/common/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -31,7 +31,7 @@ class AppRouter {
             });
       case RouteName.HOME:
         return platformPageRoute(
-            context: context, builder: (_) => BCheckInExampleScreen());
+            context: context, builder: (_) => ExampleScreen());
       default:
         return platformPageRoute(
             context: context,

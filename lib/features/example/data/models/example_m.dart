@@ -1,11 +1,11 @@
 import 'package:awesome_app/features/example/domain/entities/example.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'm_example.g.dart';
+part 'example_m.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ExampleModel extends Example {
-  ExampleModel({String? createdAt, String? name, String? avatar, int? id})
+  ExampleModel({String? createdAt, String? name, String? avatar, String? id})
       : super(avatar: avatar, name: name, createdAt: createdAt, id: id);
 
   factory ExampleModel.fromJson(Map<String, dynamic> json) =>
@@ -14,7 +14,7 @@ class ExampleModel extends Example {
   Map<String, dynamic> toJson() => _$ExampleModelToJson(this);
 
   @override
-  fromJson(json) {
+  ExampleModel fromJson(json) {
     return ExampleModel.fromJson(json);
   }
 

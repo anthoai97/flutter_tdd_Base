@@ -1,9 +1,9 @@
-import 'package:awesome_app/features/example/data/models/m_example.dart';
+import 'package:awesome_app/features/example/data/models/example_m.dart';
 import 'package:awesome_app/features/example/domain/entities/example.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tExampleModel = ExampleModel(createdAt: '1111', id: 0, name: 'test');
+  final tExampleModel = ExampleModel(createdAt: '1111', id: '0', name: 'test');
 
   test('Should be a subclass of Example entity', () {
     expect(tExampleModel, isA<Example>());

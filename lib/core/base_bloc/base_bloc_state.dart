@@ -11,7 +11,7 @@ abstract class BaseStateDef {
   static const int FAILED = 7;
 }
 
-class BaseBlocState extends Equatable {
+abstract class BaseBlocState extends Equatable {
   final int state;
   final String? error; // Send error for UI
 

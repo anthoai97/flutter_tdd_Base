@@ -42,7 +42,7 @@ class _LocaleSettingDemoState extends State<LocaleSettingDemo> {
             TextButton(
               onPressed: () async {
                 var _path = 'http://localhost:3000/test/api';
-                var _result = await ApiService.get(_path);
+                var _result = await ApiService().get(_path);
                 print(_result.data);
               },
               style: TextButton.styleFrom(backgroundColor: Colors.red),

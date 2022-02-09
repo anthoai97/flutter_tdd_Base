@@ -1,7 +1,7 @@
 import 'package:awesome_app/core/base_object.dart';
 import 'package:awesome_app/core/network/base_response.dart';
 import 'package:awesome_app/features/example/domain/entities/example.dart';
-import 'package:awesome_app/features/example/domain/repostories/r_example.dart';
+import 'package:awesome_app/features/example/domain/repostories/example_r.dart';
 import 'package:awesome_app/features/example/domain/usecases/get_example.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -20,8 +20,8 @@ void main() {
   });
 
   final tData = [
-    Example(avatar: '', id: 0, name: 'Test'),
-    Example(avatar: '', id: 1, name: 'Test 2'),
+    Example(avatar: '', id: '0', name: 'Test'),
+    Example(avatar: '', id: '1', name: 'Test 2'),
   ];
 
   test('Should return a list of Example from repository', () async {

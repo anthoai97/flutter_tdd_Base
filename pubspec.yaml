@@ -39,6 +39,9 @@ dependencies:
   cached_network_image:
   flutter_bloc:
   meta:
+  get_it:
+  shared_preferences:
+  bloc_test:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
