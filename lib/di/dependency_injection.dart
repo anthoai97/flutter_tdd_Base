@@ -16,7 +16,8 @@ Future<void> init() async {
 
   // ! Core
   sl.registerLazySingleton<ApiService>(() => ApiService());
-  sl.registerLazySingleton(() => SharedPrefManager(sharedPreferences: sl()));
+  sl.registerLazySingleton<SharedPrefManager>(
+      () => SharedPrefManager(sharedPreferences: sl()));
 
   // ! External
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
