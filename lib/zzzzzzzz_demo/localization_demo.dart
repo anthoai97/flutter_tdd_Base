@@ -1,4 +1,3 @@
-import 'package:awesome_app/core/network/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -39,15 +38,6 @@ class _LocaleSettingDemoState extends State<LocaleSettingDemo> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            TextButton(
-              onPressed: () async {
-                var _path = 'http://localhost:3000/test/api';
-                var _result = await ApiService().get(_path);
-                print(_result.data);
-              },
-              style: TextButton.styleFrom(backgroundColor: Colors.red),
-              child: Text('Call Api'),
-            )
           ],
         ),
       ),

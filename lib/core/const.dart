@@ -55,3 +55,9 @@ abstract class ExceptionConstant {
       'Unable to process the data' + _plsTryLater;
   static const String _plsTryLater = ' Please try later.';
 }
+
+abstract class PreferencesKey {
+  static const String auth_token = "authToken";
+  static const String is_dark_mode = "is_dark_mode";
+  static const String current_language = "current_language";
+}

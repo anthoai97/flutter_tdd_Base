@@ -4,7 +4,6 @@ import 'package:awesome_app/core/base_object.dart';
 import 'package:awesome_app/core/const.dart';
 import 'package:awesome_app/core/network/app_exception.dart';
 import 'package:awesome_app/core/network/base_response.dart';
-import 'package:awesome_app/core/network/dio_helper.dart';
 import 'package:awesome_app/core/utils/log.dart';
 import 'package:dio/dio.dart';
 
@@ -16,24 +15,24 @@ import 'package:dio/dio.dart';
  */
 
 class ApiService {
-  /// Remove this command to make it singleton by hand
-  // ApiService._privateConstructor();
+  // dio instance
+  final Dio _dio;
 
-  // static final ApiService _instance = ApiService._privateConstructor();
+  // injecting dio instance
+  ApiService(this._dio);
 
-  // factory ApiService() => _instance;
-
+  // Get:-----------------------------------------------------------------------
   Future<ApiResponse<T>> get<T, K>(String url,
       {BaseObject? baseObject, Map<String, String>? params}) async {
     try {
-      Response response =
-          await DioHelper.getDio().get(url, queryParameters: params);
+      Response response = await _dio.get(url, queryParameters: params);
       return _handleResponse<T, K>(response, baseObject);
     } catch (e) {
       return _handleAppException(_handleError(e));
     }
   }
 
+  // Put:-----------------------------------------------------------------------
   Future<ApiResponse<T>> put<T, K>(
     String url, {
     BaseObject? baseObject,
@@ -41,14 +40,15 @@ class ApiService {
     Map<String, dynamic>? params,
   }) async {
     try {
-      Response response = await DioHelper.getDio()
-          .put(url, data: body, queryParameters: params);
+      Response response =
+          await _dio.put(url, data: body, queryParameters: params);
       return _handleResponse<T, K>(response, baseObject);
     } catch (e) {
       return _handleAppException(_handleError(e));
     }
   }
 
+  // Post:----------------------------------------------------------------------
   Future<ApiResponse<T>> post<T, K>(
     String url, {
     BaseObject? baseObject,
@@ -56,21 +56,22 @@ class ApiService {
     Map<String, dynamic>? params,
   }) async {
     try {
-      Response response = await DioHelper.getDio()
-          .post(url, data: body, queryParameters: params);
+      Response response =
+          await _dio.post(url, data: body, queryParameters: params);
       return _handleResponse<T, K>(response, baseObject);
     } catch (e) {
       return _handleAppException(_handleError(e));
     }
   }
 
+  // Delete:--------------------------------------------------------------------
   Future<ApiResponse<T>> delete<T, K>(
     String url, {
     BaseObject? baseObject,
     Map<String, dynamic>? params,
   }) async {
     try {
-      Response response = await DioHelper.getDio()
+      Response response = await _dio
           .delete(url, queryParameters: params)
           .then((response) => response.data);
       return _handleResponse<T, K>(response, baseObject);
@@ -170,4 +171,6 @@ class ApiService {
       }
     }
   }
+
+  //
 }

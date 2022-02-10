@@ -1,15 +1,13 @@
+import 'package:awesome_app/core/shared_pref/shared_pref_helper.dart';
 import 'package:awesome_app/core/utils/log.dart';
 import 'package:dio/dio.dart';
 
-class DioHelper {
-  static Dio? _dio;
+abstract class NetWorkModule {
+  /// A singleton dio provider.
+  ///
+  /// Calling it multiple times will return the same instance.
 
-  static Dio getDio() {
-    _dio ??= createDio();
-    return _dio!;
-  }
-
-  static Map<String, String> _getHeader() {
+  static Map<String, dynamic> _getHeader() {
     // return {
     //   "Authorization": kmApiDomain.authorization,
     //   "client-version": kmApiDomain.clientVersion,
@@ -21,7 +19,7 @@ class DioHelper {
     return {};
   }
 
-  static Dio createDio() {
+  static Dio provideDio(SharedPreferenceHelper sharedPreferenceHelper) {
     Dio dio;
 
     var options = BaseOptions(
@@ -37,10 +35,20 @@ class DioHelper {
               RequestInterceptorHandler handler) async {
             String logContent = '[${options.method}] ${options.path}';
 
-            /// Handle user token is need or no
-            var header = _getHeader();
-            if (header.isNotEmpty) {
-              options.headers.addAll(header);
+            // Handle user token is need or no
+            var headers = _getHeader();
+
+            // Getting token
+            var token = await sharedPreferenceHelper.authToken;
+
+            if (token != null) {
+              headers.putIfAbsent('Authorization', () => token);
+            } else {
+              Log.debug('Auth token is null');
+            }
+
+            if (headers.isNotEmpty) {
+              options.headers.addAll(headers);
             }
 
             if (options.method == 'GET') {
