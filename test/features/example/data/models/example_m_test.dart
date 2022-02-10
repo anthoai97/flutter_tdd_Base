@@ -27,7 +27,7 @@ void main() {
 
       // assert
       final validMatcher = {
-        "id": 0,
+        "id": '0',
         "name": "test",
         "createdAt": '1111',
         'avatar': null
