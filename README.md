@@ -1,6 +1,6 @@
-# awesome_app
+# Awsome Page
 
-A awesome Flutter project.
+A awesome base Flutter project.
 
 ## Getting Started
 
@@ -24,17 +24,20 @@ fluter pub get
 2. Run in terminal: 
   flutter pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
 3. Past import => import 'generated/locale_keys.g.dart';
+
 *** Note: https://pub.dev/packages/easy_localization
 
-#### Run to get file.g for json_serializable
+### Run to get file.g for json_serializable
 
 flutter pub run build_runner build --delete-conflicting-outputs
 
-#### Run the project
+### Run the project
 
 - Use visual studio code:
-	""" Adding this config to lauch.json
-		"configurations": [
+	- Adding this config to lauch.json
+	
+		"configurations":
+		 [
 			{
 				"name": "awesome_app_base dev",
 				"request": "launch",
@@ -57,12 +60,11 @@ flutter pub run build_runner build --delete-conflicting-outputs
 				"args": ["--flavor", "production", "--target", "lib/main_production.dart"]
 			}
 		]
-	"""
 
 - Run by terminal:
-	Dev : flutter run --target lib/main.dart --flavor dev
-	Staging : flutter run --target lib/main_staging.dart --flavor staging
-	Production : flutter run --target lib/main_production.dart --flavor production
+	- Dev : flutter run --target lib/main.dart --flavor dev
+	- Staging : flutter run --target lib/main_staging.dart --flavor staging
+	- Production : flutter run --target lib/main_production.dart --flavor production
 
 ### Helper
 
@@ -70,6 +72,6 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 	flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*.yaml
 
-	[online documentation](https://pub.dev/packages/flutter_launcher_icons)
+*** Note: https://pub.dev/packages/flutter_launcher_icons
 
 
