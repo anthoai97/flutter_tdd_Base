@@ -61,3 +61,5 @@ abstract class PreferencesKey {
   static const String is_dark_mode = "is_dark_mode";
   static const String current_language = "current_language";
 }
+
+enum EnvType { DEVELOPMENT, STAGING, PRODUCTION }
