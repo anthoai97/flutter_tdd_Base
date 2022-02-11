@@ -15,19 +15,28 @@ jobs:
   build:
     runs-on: macos-latest
     
-    env:
-      cache-number: ${{ secrets.CACHE_NUMBER }}
-
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.8.1'
           channel: 'stable'
-          cache: true
-          cache-key: ${{ env.cache-number }}
-          cache-path: ${{ runner.tool_cache }}/flutter
-      - run: flutter -version
+      - run: flutter --version
+
+      - name: Cache Flutter modules
+        uses: actions/cache@v2.1.6
+        env:
+          cache-number: ${{ secrets.CACHE_NUMBER }}
+        with:
+          path: |
+            ~/.pub-cache/bin
+          key: ${{ runner.os }}-pub-${{ env.cache-number }}-${{ env.flutter_version }}-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-${{ env.flutter_version }}-
+            ${{ runner.os }}-pub-
+            ${{ runner.os }}-
+        run: |
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+
       - run: flutter pub get
       - run: flutter pub run build_runner build --delete-conflicting-outputs
       - run: flutter test
