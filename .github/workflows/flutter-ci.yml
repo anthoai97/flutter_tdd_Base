@@ -34,10 +34,22 @@ jobs:
             ${{ runner.os }}-pub-
             ${{ runner.os }}-
 
-      - name: Get flutter dependencies.
+      - name: Upgrade flutter
         run: |
           export PATH="$PATH":"$HOME/.pub-cache/bin"
+          flutter upgrade
+
+
+      - name: Get flutter dependencies.
+        run: |
           flutter --version
           flutter pub get
-          flutter pub run build_runner build --delete-conflicting-outputs
+          flutter pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
+
+      - name: Run build runner
+        run: |
+          flutter pub run build_runner --delete-conflicting-outputs
+
+      - name: Run Unit Test
+        run:
           flutter test
