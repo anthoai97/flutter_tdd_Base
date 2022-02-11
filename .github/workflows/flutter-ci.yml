@@ -20,7 +20,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - run: flutter --version
+        run: flutter --version
 
       - name: Cache Flutter modules
         uses: actions/cache@v2.1.6
@@ -34,10 +34,10 @@ jobs:
             ${{ runner.os }}-pub-${{ env.flutter_version }}-
             ${{ runner.os }}-pub-
             ${{ runner.os }}-
+
+      - name: Get flutter dependencies.
         run: |
           export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter test
-      
+          flutter pub get
+          flutter pub run build_runner build --delete-conflicting-outputs
+          flutter test
