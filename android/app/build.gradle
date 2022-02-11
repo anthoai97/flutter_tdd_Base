@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -48,6 +48,27 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+		flavorDimensions "default"
+
+		// Config App Name for Android
+		productFlavors {
+			dev {
+				dimension "default"
+				applicationIdSuffix ".dev"
+				resValue "string", "app_name", "Dev Awesome App"
+			}
+			staging {
+				dimension "default"
+				applicationIdSuffix ".stg"
+				resValue "string", "app_name", "Stag Awesome App"
+			}
+			production {
+				dimension "default"
+				applicationIdSuffix ""
+				resValue "string", "app_name", "Awesome App"
+			}
+		}
 }
 
 flutter {

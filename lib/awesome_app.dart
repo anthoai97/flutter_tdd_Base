@@ -1,3 +1,4 @@
+import 'package:awesome_app/core/const.dart';
 import 'package:awesome_app/resources/R.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_app/core/route/navigation_manager.dart';
@@ -12,6 +13,7 @@ class AwesomeApp extends StatelessWidget {
       title: 'Awesome App',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
+      debugShowCheckedModeBanner: R.env == EnvType.PRODUCTION,
       locale: context.locale,
       theme: R.themes.lightTheme,
       themeMode: ThemeMode.system,

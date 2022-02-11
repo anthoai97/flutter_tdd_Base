@@ -53,6 +53,7 @@ dev_dependencies:
   build_runner:
   copy_with_extension_gen:
   mockito: ^5.0.17
+  flutter_launcher_icons: ^0.9.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
