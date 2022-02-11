@@ -3,7 +3,6 @@ import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
 import 'package:awesome_app/core/base_object.dart';
 import 'package:awesome_app/core/network/base_response.dart';
-import 'package:awesome_app/core/shared_pref/shared_pref_manager.dart';
 import 'package:awesome_app/features/example/domain/entities/example.dart';
 import 'package:awesome_app/features/example/domain/usecases/get_example.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';

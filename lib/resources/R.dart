@@ -1,3 +1,4 @@
+import 'package:awesome_app/core/const.dart';
 import 'package:awesome_app/core/utils/ui_utils.dart';
 import 'package:awesome_app/resources/images.dart';
 import 'package:awesome_app/resources/string.dart';
@@ -17,6 +18,9 @@ class R {
   /// Localization config
   static const String LOCALIZATION_PATH = 'assets/translations';
   static const List<Locale> LOCALES = [Locale('en'), Locale('vi')];
+
+  // Env
+  static late EnvType env;
 
   static void init(BuildContext context) {
     /// Init screen utils

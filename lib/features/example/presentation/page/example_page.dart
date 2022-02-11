@@ -4,8 +4,6 @@ import 'package:awesome_app/core/base_bloc/base_widget_with_bloc.dart';
 import 'package:awesome_app/di/dependency_injection.dart';
 import 'package:awesome_app/features/example/domain/entities/example.dart';
 import 'package:awesome_app/features/example/presentation/bloc/example_page_bloc.dart';
-import 'package:awesome_app/resources/R.dart';
-import 'package:awesome_app/resources/styles.dart';
 import 'package:awesome_app/widgets/custom_smart_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
