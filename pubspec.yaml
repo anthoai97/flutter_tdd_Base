@@ -40,7 +40,7 @@ dependencies:
   flutter_bloc:
   meta:
   get_it:
-  shared_preferences:
+  shared_preferences: ^2.0.13
   bloc_test:
 
   # The following adds the Cupertino Icons font to your application.

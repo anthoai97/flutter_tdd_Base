@@ -44,6 +44,7 @@ jobs:
         run: |
           flutter --version
           flutter pub get
+          flutter pub upgrade
           flutter pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
 
       - name: Run build runner
