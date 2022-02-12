@@ -68,7 +68,13 @@ jobs:
         run: make format-analyze
 
       - name: Run Unit Test
-        run: make test
+        run: make unit-test
 
       - name: Build test apk
         run: make build-android-dev
+
+      - name: Create Github Release
+        run: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/*-release.apk"
+          token: ${{ secrets.PERSONAL_RELEASE_TOKEN }}

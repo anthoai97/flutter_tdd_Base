@@ -26,7 +26,7 @@ dependencies:
 
   # Library
   json_serializable:
-  json_annotation: ^4.3.0
+  json_annotation:
   easy_localization:
   dio:
   logger:
