@@ -74,7 +74,7 @@ jobs:
         run: make build-android-dev
 
       - name: Create Github Release
-        run: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/flutter-apk/*-release.apk"
           token: ${{ secrets.PERSONAL_RELEASE_TOKEN }}
