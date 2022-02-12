@@ -1,4 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+
+import '../resources/R.dart';
+import 'const.dart';
 
 class Helper {
   //
@@ -9,6 +15,27 @@ class Helper {
       number == null ? null : int.tryParse(number);
 
   static String? stringFromInt(int? number) => number?.toString();
+
+  /// Core helper:------------------------------------------------------------
+  static Future<void> initFirebaseLibrary() async {
+    /// Firebase
+    await Firebase.initializeApp();
+
+    /// Crashlytics
+    await FirebaseCrashlytics.instance
+        .setCrashlyticsCollectionEnabled(R.env == EnvType.DEVELOPMENT);
+
+    Function originalOnError = FlutterError.onError!;
+    FlutterError.onError = (errorDetails) async {
+      await FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+      originalOnError(errorDetails);
+    };
+  }
+
+  static Future<void> initEasyLocalization() async {
+    await EasyLocalization.ensureInitialized();
+    EasyLocalization.logger.enableBuildModes = [];
+  }
 
   //
 }

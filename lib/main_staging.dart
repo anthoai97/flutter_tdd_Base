@@ -1,5 +1,6 @@
 import 'package:awesome_app/awesome_app.dart';
 import 'package:awesome_app/core/const.dart';
+import 'package:awesome_app/core/helper.dart';
 import 'package:awesome_app/core/utils/log.dart';
 import 'package:awesome_app/resources/R.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -14,9 +15,11 @@ void main() async {
   R.env = EnvType.STAGING;
   Log.debug(R.env, title: "Environment");
 
+  /// Firebase
+  await Helper.initFirebaseLibrary();
+
   /// Localization init
-  await EasyLocalization.ensureInitialized();
-  EasyLocalization.logger.enableBuildModes = [];
+  await Helper.initEasyLocalization();
 
   /// Dependency init
   await di.init();

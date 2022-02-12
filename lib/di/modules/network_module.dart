@@ -1,6 +1,7 @@
 import 'package:awesome_app/core/shared_pref/shared_pref_helper.dart';
 import 'package:awesome_app/core/utils/log.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_firebase_performance/dio_firebase_performance.dart';
 
 abstract class NetWorkModule {
   /// A singleton dio provider.
@@ -69,7 +70,9 @@ abstract class NetWorkModule {
             return handler.reject(e);
           },
         ),
-      );
+      )
+      // Firebase Performance
+      ..interceptors.add(DioFirebasePerformanceInterceptor());
 
     return dio;
   }

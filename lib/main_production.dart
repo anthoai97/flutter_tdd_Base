@@ -5,6 +5,7 @@ import 'package:awesome_app/resources/R.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import 'core/helper.dart';
 import 'di/dependency_injection.dart' as di;
 
 void main() async {
@@ -14,9 +15,11 @@ void main() async {
   R.env = EnvType.PRODUCTION;
   Log.debug(R.env, title: "Environment");
 
+  /// Firebase
+  await Helper.initFirebaseLibrary();
+
   /// Localization init
-  await EasyLocalization.ensureInitialized();
-  EasyLocalization.logger.enableBuildModes = [];
+  await Helper.initEasyLocalization();
 
   /// Dependency init
   await di.init();
