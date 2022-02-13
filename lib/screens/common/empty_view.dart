@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:awesome_app/resources/R.dart';
 import 'package:awesome_app/widgets/image_widget.dart';
 import 'package:flutter/material.dart';

@@ -66,7 +66,6 @@ class ExampleBloc extends BaseBloc<ExampleBlocEvent, ExampleBlocState> {
 
   Future<ExampleBlocState> _getExampleData() async {
     ApiResponse<List<Example>> response = await getExample.call(NoParam());
-    Log.debug(response.toString());
     if (response.success) {
       return state.copyWith(
           state: BaseStateDef.SUCCESS, example: response.data);
@@ -81,9 +80,5 @@ class ExampleBloc extends BaseBloc<ExampleBlocEvent, ExampleBlocState> {
   }
 
   @override
-  bool isNoData() {
-    Log.debug(state.example.isListNotEmpty,
-        title: 'state.example.isListNotEmpty');
-    return state.example.isListEmpty;
-  }
+  bool isNoData() => state.example.isListEmpty;
 }
