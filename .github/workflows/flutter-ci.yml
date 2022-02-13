@@ -8,9 +8,9 @@ name: Flutter CI/CD
 on:
   pull_request:
     branches: [ master ]
-  push: 
+  push:
     branches: [ master ]
-      tag: "v*.*.*"
+    tag: "v*.*.*"
 
 jobs:
   build:
