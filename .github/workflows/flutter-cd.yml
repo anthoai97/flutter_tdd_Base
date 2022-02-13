@@ -94,7 +94,7 @@ jobs:
       
       - name: Upload APK file assets
         uses: actions/upload-release-asset@v1
-         env:
+        env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_RELEASE_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
