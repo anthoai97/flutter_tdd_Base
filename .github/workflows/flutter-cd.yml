@@ -3,11 +3,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Flutter CI
+name: Flutter CD
 
 on:
-  pull_request:
-    branches: [ master ]
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
@@ -15,6 +16,13 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Check output
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+        
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
@@ -69,3 +77,27 @@ jobs:
 
       - name: Run Unit Test
         run: make unit-test
+
+      - name: Build Dev Apk
+        run: make build-android-dev
+
+      - name: Create Github Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_RELEASE_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      
+      - name: Upload APK file assets
+        uses: actions/upload-release-asset@v1
+         env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_RELEASE_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-dev-release.apk
+          asset_name: app-dev-release.apk
+          asset_content_type: application/zip
