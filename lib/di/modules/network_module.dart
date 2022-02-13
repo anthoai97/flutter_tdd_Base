@@ -29,50 +29,51 @@ abstract class NetWorkModule {
       receiveTimeout: 30 * 1000,
     );
 
-    dio = Dio(options)
-      ..interceptors.add(
-        InterceptorsWrapper(
-          onRequest: (RequestOptions options,
-              RequestInterceptorHandler handler) async {
-            String logContent = '[${options.method}] ${options.path}';
+    dio = Dio(options);
 
-            // Handle user token is need or no
-            var headers = _getHeader();
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest:
+            (RequestOptions options, RequestInterceptorHandler handler) async {
+          String logContent = '[${options.method}] ${options.path}';
 
-            // Getting token
-            var token = await sharedPreferenceHelper.authToken;
+          // Handle user token is need or no
+          var headers = _getHeader();
 
-            if (token != null) {
-              headers.putIfAbsent('Authorization', () => token);
-            } else {
-              Log.debug('Auth token is null');
-            }
+          // Getting token
+          var token = await sharedPreferenceHelper.authToken;
 
-            if (headers.isNotEmpty) {
-              options.headers.addAll(headers);
-            }
+          if (token != null) {
+            headers.putIfAbsent('Authorization', () => token);
+          } else {
+            Log.debug('Auth token is null');
+          }
 
-            if (options.method == 'GET') {
-              logContent += '\nQuery param: ${options.queryParameters}';
-            } else {
-              logContent += '\nBody: ${options.data}';
-            }
-            Log.debug(logContent, title: 'onRequest');
+          if (headers.isNotEmpty) {
+            options.headers.addAll(headers);
+          }
 
-            return handler.next(options);
-          },
-          onResponse: (Response response, ResponseInterceptorHandler handler) {
-            Log.debug('${response.data}', title: 'onResponse');
-            return handler.next(response);
-          },
-          onError: (DioError e, ErrorInterceptorHandler handler) {
-            Log.error(e, error: 'onError');
-            return handler.reject(e);
-          },
-        ),
-      )
-      // Firebase Performance
-      ..interceptors.add(DioFirebasePerformanceInterceptor());
+          if (options.method == 'GET') {
+            logContent += '\nQuery param: ${options.queryParameters}';
+          } else {
+            logContent += '\nBody: ${options.data}';
+          }
+          Log.debug(logContent, title: 'onRequest');
+
+          return handler.next(options);
+        },
+        onResponse: (Response response, ResponseInterceptorHandler handler) {
+          Log.debug('${response.data}', title: 'onResponse');
+          return handler.next(response);
+        },
+        onError: (DioError e, ErrorInterceptorHandler handler) {
+          Log.error(e, error: 'onError');
+          return handler.reject(e);
+        },
+      ),
+    );
+    // Firebase Performance
+    // dio.interceptors.add(DioFirebasePerformanceInterceptor());
 
     return dio;
   }

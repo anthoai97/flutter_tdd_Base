@@ -44,6 +44,7 @@ abstract class ColorsDef {
   static const Color kPrimaryColor = Colors.black;
   static const Color kPrimaryLightColor = Colors.black12;
   static const Color kAccentColor = Color(0xFF7f0000);
+
   static const Color kDefaultTextColor = Colors.black;
   static const Color kDefaultTextWhiteColor = Colors.white;
 

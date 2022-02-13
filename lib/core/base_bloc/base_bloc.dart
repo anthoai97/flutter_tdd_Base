@@ -12,6 +12,7 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
   int pageSize = 20;
   int page = 0;
   bool canLoadMore = true;
+  String? blocError;
 
   BaseBloc(
     S initialState, {
@@ -26,6 +27,12 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
     // fireEventToRefresh
   }
 
+  @mustCallSuper
+  void onRetry() {
+    resetBloc();
+    // fireEventToRetry
+  }
+
   void onLoadMore() {
     // fireEventToLoadMore
     if (canLoadMore) page++;
@@ -34,7 +41,12 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
   void resetBloc() {
     page = startPage;
     canLoadMore = true;
+    clearBlocError();
   }
+
+  void clearBlocError() => blocError = null;
+
+  bool isNoData() => true;
 
   void dispose() {
     // dispose

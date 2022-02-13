@@ -59,7 +59,7 @@ jobs:
         run: |
           flutter --version
           make dependencies
-          make easy-location
+          make easy-localization
 
       - name: Run build runner
         run: make build-runner
