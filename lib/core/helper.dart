@@ -23,7 +23,7 @@ class Helper {
 
     /// Crashlytics
     await FirebaseCrashlytics.instance
-        .setCrashlyticsCollectionEnabled(R.env == EnvType.DEVELOPMENT);
+        .setCrashlyticsCollectionEnabled(R.env != EnvType.DEVELOPMENT);
 
     Function originalOnError = FlutterError.onError!;
     FlutterError.onError = (errorDetails) async {
