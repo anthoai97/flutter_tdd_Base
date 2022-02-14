@@ -83,4 +83,10 @@ class ExampleBloc extends BaseBloc<ExampleBlocEvent, ExampleBlocState> {
   bool isNoData() {
     return state.example.isListEmpty;
   }
+
+  @override
+  void onRetry() {
+    super.onRetry();
+    Log.debug("retrye");
+  }
 }

@@ -123,12 +123,7 @@ abstract class ComponentState<W extends StatefulWidget, E extends BaseBlocEvent,
   }
 
   Widget renderEmptyViewByState(BuildContext context, BaseBlocState state) {
-    return ListView(
-      addRepaintBoundaries: false,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: PaddingDef.padding_15),
-      children: [renderEmptyView(context, state)],
-    );
+    return renderEmptyView(context, state);
   }
 
   Widget renderEmptyView(BuildContext context, BaseBlocState state) {
@@ -138,16 +133,9 @@ abstract class ComponentState<W extends StatefulWidget, E extends BaseBlocEvent,
   }
 
   Widget renderErrorViewByState(BuildContext context, BaseBlocState state) {
-    return ListView(
-      addRepaintBoundaries: false,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: PaddingDef.padding_15),
-      children: [
-        null != bloc()!.blocError
-            ? renderErrorView(context, state)
-            : renderEmptyView(context, state)
-      ],
-    );
+    return null != bloc()!.blocError
+        ? renderErrorView(context, state)
+        : renderEmptyView(context, state);
   }
 
   Widget renderErrorView(BuildContext context, BaseBlocState state) {
