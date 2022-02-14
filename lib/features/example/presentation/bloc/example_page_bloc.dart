@@ -80,5 +80,7 @@ class ExampleBloc extends BaseBloc<ExampleBlocEvent, ExampleBlocState> {
   }
 
   @override
-  bool isNoData() => state.example.isListEmpty;
+  bool isNoData() {
+    return state.example.isListEmpty;
+  }
 }

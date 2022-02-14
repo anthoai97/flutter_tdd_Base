@@ -46,7 +46,7 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
 
   void clearBlocError() => blocError = null;
 
-  bool isNoData() => true;
+  bool isNoData();
 
   void dispose() {
     // dispose

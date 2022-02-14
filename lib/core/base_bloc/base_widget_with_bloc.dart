@@ -95,8 +95,9 @@ abstract class ComponentState<W extends StatefulWidget, E extends BaseBlocEvent,
         body(),
         loading(),
       ]);
-    } else if (BaseStateDef.SUCCESS == state.state ||
-        BaseStateDef.STARTED == state.state && bloc()!.isNoData()) {
+    } else if ((BaseStateDef.SUCCESS == state.state ||
+            BaseStateDef.STARTED == state.state) &&
+        bloc()!.isNoData()) {
       return renderEmptyViewByState(context, state);
     } else if (BaseStateDef.FAILED == state.state && bloc()!.isNoData()) {
       return renderErrorView(context, state);
