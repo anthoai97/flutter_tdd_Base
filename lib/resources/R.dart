@@ -1,5 +1,5 @@
 import 'package:awesome_app/core/const.dart';
-import 'package:awesome_app/core/utils/ui_utils.dart';
+import 'package:awesome_app/core/utils/screen_utils.dart';
 import 'package:awesome_app/resources/images.dart';
 import 'package:awesome_app/resources/string.dart';
 import 'package:awesome_app/resources/themes.dart';
@@ -9,6 +9,7 @@ class R {
   R._();
 
   static const String applicationId = '';
+  static const String appName = "Awsome App";
 
   static final ThemeDef themes = ThemeDef.instance;
   static final ScreenUtil screenUtil = ScreenUtil.instance;

@@ -3,9 +3,11 @@ import 'package:awesome_app/core/base_bloc/base_bloc_event.dart';
 import 'package:awesome_app/core/base_bloc/base_bloc_state.dart';
 import 'package:awesome_app/core/base_object.dart';
 import 'package:awesome_app/core/network/base_response.dart';
+import 'package:awesome_app/core/utils/log.dart';
 import 'package:awesome_app/features/example/domain/entities/example.dart';
 import 'package:awesome_app/features/example/domain/usecases/get_example.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:awesome_app/core/utils/extensions.dart';
 
 part 'example_page_bloc.g.dart';
 
@@ -64,15 +66,27 @@ class ExampleBloc extends BaseBloc<ExampleBlocEvent, ExampleBlocState> {
 
   Future<ExampleBlocState> _getExampleData() async {
     ApiResponse<List<Example>> response = await getExample.call(NoParam());
-
     if (response.success) {
       return state.copyWith(
           state: BaseStateDef.SUCCESS, example: response.data);
     } else {
+      blocError = response.getErrorMessage;
+      Log.error(blocError, error: 'error');
       return state.copyWith(
           state: BaseStateDef.FAILED,
           example: null,
           error: response.getErrorMessage);
     }
+  }
+
+  @override
+  bool isNoData() {
+    return state.example.isListEmpty;
+  }
+
+  @override
+  void onRetry() {
+    super.onRetry();
+    Log.debug("retrye");
   }
 }

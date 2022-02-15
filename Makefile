@@ -15,8 +15,8 @@ format-analyze:
 				flutter format --dry-run lib/
 				flutter analyze
 
-.PHONY: easy-location
-easy-location:
+.PHONY: easy-localization
+easy-localization:
 				flutter pub run easy_localization:generate -S assets/translations -f json -o locale_keys.g.dart
 
 .PHONY: build-runner

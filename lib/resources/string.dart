@@ -1,3 +1,5 @@
+import 'package:easy_localization/src/public_ext.dart';
+
 class StringDef {
   static StringDef? _instance;
 
@@ -11,5 +13,7 @@ class StringDef {
     return _instance!;
   }
 
-  late final String noContentFound = 'noContentFound';
+  String get noContentFound => 'noContentFound'.tr();
+  String get noDataToShowText => 'noDataToShowText'.tr();
+  String get commonErrorText => 'commonErrorText'.tr();
 }

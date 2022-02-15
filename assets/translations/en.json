@@ -1,15 +1,17 @@
 {
-  "example": {
-    "hello": "Hello",
-    "world": "World!",
-    "helloWorld": "@:example.hello @:example.world"
-  },
-  "gender": {
-    "male": "Hi man ;) {}",
-    "female": "Hello girl :) {}",
-    "other": "Hello {}"
-  },
-  "date": "{currentDate}.",
-  "dateLogging": "INFO: the date today is @:date",
-  "noContentFound" :"Không tìm thấy nội dung"
+	"example": {
+		"hello": "Hello",
+		"world": "World!",
+		"helloWorld": "@:example.hello @:example.world"
+	},
+	"gender": {
+		"male": "Hi man ;) {}",
+		"female": "Hello girl :) {}",
+		"other": "Hello {}"
+	},
+	"date": "{currentDate}.",
+	"dateLogging": "INFO: the date today is @:date",
+	"noContentFound": "No content found",
+	"noDataToShowText": "No data to show",
+  "commonErrorText": "Unknown error"
 }

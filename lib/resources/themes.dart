@@ -134,7 +134,7 @@ class ThemeDef {
     splashColor: Colors.white.withOpacity(0.1),
   );
 
-  late final AppBarTheme appBarTheme = AppBarTheme(
+  final AppBarTheme appBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
     titleTextStyle: TextStyleDef.appbar,
