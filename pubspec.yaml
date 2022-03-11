@@ -45,7 +45,6 @@ dependencies:
   bloc_test:
 
   firebase_core:
-  dio_firebase_performance:
   firebase_crashlytics:
 
 
